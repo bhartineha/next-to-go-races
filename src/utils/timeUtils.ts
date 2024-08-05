@@ -1,6 +1,10 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
+import { AdvertisedStart } from './types/TimeUtils';
 
-export const parseAdvertisedStart = (advertisedStart: any) => {
+// Function to parse advertised start
+export const parseAdvertisedStart = (
+  advertisedStart: AdvertisedStart,
+): Moment => {
   return typeof advertisedStart === 'string'
     ? moment(advertisedStart)
     : moment(advertisedStart.seconds * 1000);
