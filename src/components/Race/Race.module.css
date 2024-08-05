@@ -1,0 +1,14 @@
+.race {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.race h2 {
+  font-size: 16px;
+  color: #191919;
+}
+
+.race p {
+  font-size: 14px;
+}

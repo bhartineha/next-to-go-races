@@ -1,0 +1,35 @@
+.categoryTabs {
+  display: flex;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: black; /* Non-selected text color */
+  position: relative;
+  margin-right: 5px;
+}
+
+.tab.selected {
+  border-bottom: 2px solid green; /* Bottom green line for selected tab */
+}
+
+.tab:hover {
+  background-color: #d8d8d8;
+}
+
+.tab img {
+  margin-right: 8px;
+}
+
+.tab img[alt*="Horse Racing"] {
+  width: 16px;
+  height: 16px;
+}
