@@ -6,13 +6,17 @@ import { RaceProps } from './Race.types';
 import moment from 'moment';
 
 // Mock the Timer component
-jest.mock('../Timer/Timer', () => () => <div>Mock Timer</div>);
+jest.mock('../Timer/Timer', () => {
+  const MockTimer = () => <div>Mock Timer</div>;
+  MockTimer.displayName = 'MockTimer'; // Adding display name
+  return MockTimer;
+});
 
 describe('Race Component', () => {
   const defaultProps: RaceProps = {
     meetingName: 'Meeting 1',
     raceNumber: '1',
-    advertisedStart: moment().add(10, 'minutes').toISOString(), // Or use moment object directly
+    advertisedStart: moment().add(10, 'minutes').toISOString(),
   };
 
   test('renders Race component with correct props', () => {
@@ -29,13 +33,13 @@ describe('Race Component', () => {
     expect(screen.getByText('Starts In: Mock Timer')).toBeInTheDocument();
   });
 
-  test('parses advertisedStart correctly as moment object', () => {
-    const momentProps: RaceProps = {
+  test('parses advertisedStart correctly as object with seconds property', () => {
+    const timestampProps: RaceProps = {
       ...defaultProps,
-      advertisedStart: moment().add(10, 'minutes'), // Use moment object directly
+      advertisedStart: { seconds: moment().add(10, 'minutes').unix() },
     };
 
-    render(<Race {...momentProps} />);
+    render(<Race {...timestampProps} />);
 
     expect(screen.getByText('Starts In: Mock Timer')).toBeInTheDocument();
   });

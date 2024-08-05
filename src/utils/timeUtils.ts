@@ -1,5 +1,5 @@
 import moment, { Moment } from 'moment';
-import { AdvertisedStart } from './types/TimeUtils';
+import { AdvertisedStart } from './types/TimeUtils.types';
 
 // Function to parse advertised start
 export const parseAdvertisedStart = (

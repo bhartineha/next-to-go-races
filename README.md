@@ -22,7 +22,7 @@ This project is a single-page application built using React.js and TypeScript th
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/next-to-go-races.git
+    git clone https://github.com/bhartineha/next-to-go-races.git
     cd next-to-go-races
     ```
 

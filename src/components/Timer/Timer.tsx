@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
-import { formatDuration } from '../../utils/timeUtils';
+import moment, { Duration } from 'moment';
 import { TimerProps } from './Timer.types';
+import { formatDuration } from '../../utils/timeUtils';
 
 const Timer: React.FC<TimerProps> = ({ advertisedStart }) => {
-  const [timeLeft, setTimeLeft] = useState<moment.Duration | null>(null);
+  const [timeLeft, setTimeLeft] = useState<Duration | null>(null);
 
   useEffect(() => {
     const updateTimeLeft = () => {

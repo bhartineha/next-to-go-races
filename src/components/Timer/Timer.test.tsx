@@ -15,18 +15,33 @@ jest.mock('../../utils/timeUtils', () => ({
 }));
 
 describe('Timer Component', () => {
-  const validStart = moment().add(10, 'minutes');
-  const expiredStart = moment().subtract(10, 'minutes');
+  const validStartString = moment().add(10, 'minutes').toISOString();
+  const validStartSeconds = { seconds: moment().add(10, 'minutes').unix() };
+  const expiredStartString = moment().subtract(10, 'minutes').toISOString();
+  const expiredStartSeconds = { seconds: moment().subtract(10, 'minutes').unix() };
 
-  test('renders correctly with valid advertisedStart', () => {
-    render(<Timer advertisedStart={validStart} />);
+  test('renders correctly with valid advertisedStart as string', () => {
+    render(<Timer advertisedStart={moment(validStartString)} />);
 
     expect(formatDuration).toHaveBeenCalled();
     expect(screen.getByText(/10 minutes/)).toBeInTheDocument();
   });
 
-  test('handles expired advertisedStart gracefully', () => {
-    render(<Timer advertisedStart={expiredStart} />);
+  test('renders correctly with valid advertisedStart as seconds object', () => {
+    render(<Timer advertisedStart={moment(validStartSeconds.seconds * 1000)} />);
+
+    expect(formatDuration).toHaveBeenCalled();
+    expect(screen.getByText(/10 minutes/)).toBeInTheDocument();
+  });
+
+  test('handles expired advertisedStart as string gracefully', () => {
+    render(<Timer advertisedStart={moment(expiredStartString)} />);
+
+    expect(screen.getByText('Expired')).toBeInTheDocument();
+  });
+
+  test('handles expired advertisedStart as seconds object gracefully', () => {
+    render(<Timer advertisedStart={moment(expiredStartSeconds.seconds * 1000)} />);
 
     expect(screen.getByText('Expired')).toBeInTheDocument();
   });
