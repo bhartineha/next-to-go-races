@@ -63,38 +63,6 @@ The application should now be running on `http://localhost:3000`.
 This application uses the following API endpoint to fetch race data:
 https://api.neds.com.au/rest/v1/racing/?method=nextraces&amp;count=10
 
-## Project Structure
-src/
-├── components/
-│   ├── CategoryTabs/
-│   │   ├── CategoryTabs.tsx
-│   │   ├── CategoryTabs.module.css
-│   │   ├── CategoryTabs.test.tsx
-│   │   ├── CategoryTabs.types.ts
-│   │   └── index.ts
-│   ├── Race/
-│   │   ├── Race.tsx
-│   │   ├── Race.module.css
-│   │   ├── Race.test.tsx
-│   │   ├── Race.types.ts
-│   │   └── index.ts
-│   ├── RaceList/
-│   │   ├── RaceList.tsx
-│   │   ├── RaceList.module.css
-│   │   ├── RaceList.test.tsx
-│   │   ├── RaceList.types.ts
-│   │   └── index.ts
-│   └── Timer/
-│       ├── Timer.tsx
-│       ├── Timer.module.css
-│       ├── Timer.test.tsx
-│       ├── Timer.types.ts
-│       └── index.ts
-├── hooks/
-│   ├── useFetchRaces.ts   // Custom hook to fetch races
-├── utils/
-│   └── timeUtils.ts       // Utility functions for time calculations
-├── App.tsx                // Main application component
-├── index.tsx              // Entry point of the application
-├── App.css                // CSS styling for the app
-└── index.css              // Global CSS
+## Project Screenshot
+![alt text](public/images/project-screenshot.png)
+
