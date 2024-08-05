@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import moment from "moment";
-import { formatDuration } from "../../utils/timeUtils";
-import { TimerProps } from "./Timer.types";
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import { formatDuration } from '../../utils/timeUtils';
+import { TimerProps } from './Timer.types';
 
 const Timer: React.FC<TimerProps> = ({ advertisedStart }) => {
   const [timeLeft, setTimeLeft] = useState<moment.Duration | null>(null);

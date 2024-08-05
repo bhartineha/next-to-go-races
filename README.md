@@ -36,6 +36,12 @@ This project is a single-page application built using React.js and TypeScript th
     npm start
     ```
 
+4. Linting
+    ```sh
+    npm run lint
+    ```
+
+
 The application should now be running on `http://localhost:3000`.
 
 ## Usage

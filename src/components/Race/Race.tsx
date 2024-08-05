@@ -1,8 +1,8 @@
-import React from "react";
-import moment from "moment";
-import Timer from "../Timer/Timer";
-import { RaceProps } from "./Race.types";
-import styles from "./Race.module.css";
+import React from 'react';
+import moment from 'moment';
+import Timer from '../Timer/Timer';
+import { RaceProps } from './Race.types';
+import styles from './Race.module.css';
 
 const Race: React.FC<RaceProps> = ({
   meetingName,
@@ -11,7 +11,7 @@ const Race: React.FC<RaceProps> = ({
 }) => {
   // Ensure advertisedStart is always a moment object
   const start =
-    typeof advertisedStart === "string"
+    typeof advertisedStart === 'string'
       ? moment(advertisedStart)
       : moment(advertisedStart.seconds * 1000);
 

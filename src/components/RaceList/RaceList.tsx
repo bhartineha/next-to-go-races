@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import useFetchRaces from "../../hooks/useFetchRaces";
-import Race from "../Race/Race";
-import CategoryTabs from "../CategoryTabs/CategoryTabs";
-import { parseAdvertisedStart, isTimeValid } from "../../utils/timeUtils";
+import React, { useState } from 'react';
+import useFetchRaces from '../../hooks/useFetchRaces';
+import Race from '../Race/Race';
+import CategoryTabs from '../CategoryTabs/CategoryTabs';
+import { parseAdvertisedStart, isTimeValid } from '../../utils/timeUtils';
 
 const RaceList: React.FC = () => {
   const races = useFetchRaces();
