@@ -1,7 +1,7 @@
 module.exports = {
   transform: {
-    '^.+\\.[t|j]sx?$': 'babel-jest',
+    '^.+\\.[tj]sx?$': 'babel-jest',
   },
-  // Add this to ensure Jest uses the correct environment
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testEnvironment: 'jsdom',
 };

@@ -19,9 +19,9 @@ const Race: React.FC<RaceProps> = ({
     <div className={styles.race}>
       <h2>{meetingName}</h2>
       <p>Race Number: {raceNumber}</p>
-      <p>
+      <div>
         Starts In: <Timer advertisedStart={start} />
-      </p>
+      </div>
     </div>
   );
 };

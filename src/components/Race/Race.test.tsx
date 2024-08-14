@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Race from './Race';
@@ -20,17 +21,25 @@ describe('Race Component', () => {
   };
 
   test('renders Race component with correct props', () => {
-    render(<Race {...defaultProps} />);
+    act(() => {
+      render(<Race {...defaultProps} />);
+    });
 
     expect(screen.getByText('Meeting 1')).toBeInTheDocument();
     expect(screen.getByText('Race Number: 1')).toBeInTheDocument();
-    expect(screen.getByText('Starts In: Mock Timer')).toBeInTheDocument();
+    expect(screen.getByText((content, element) => {
+      return element?.textContent === 'Starts In: Mock Timer';
+    })).toBeInTheDocument();
   });
 
   test('parses advertisedStart correctly as string', () => {
-    render(<Race {...defaultProps} />);
+    act(() => {
+      render(<Race {...defaultProps} />);
+    });
 
-    expect(screen.getByText('Starts In: Mock Timer')).toBeInTheDocument();
+    expect(screen.getByText((content, element) => {
+      return element?.textContent === 'Starts In: Mock Timer';
+    })).toBeInTheDocument();
   });
 
   test('parses advertisedStart correctly as object with seconds property', () => {
@@ -39,8 +48,12 @@ describe('Race Component', () => {
       advertisedStart: { seconds: moment().add(10, 'minutes').unix() },
     };
 
-    render(<Race {...timestampProps} />);
+    act(() => {
+      render(<Race {...timestampProps} />);
+    });
 
-    expect(screen.getByText('Starts In: Mock Timer')).toBeInTheDocument();
+    expect(screen.getByText((content, element) => {
+      return element?.textContent === 'Starts In: Mock Timer';
+    })).toBeInTheDocument();
   });
 });

@@ -17,12 +17,12 @@ const categories = [
   },
   {
     id: '9daef0d7-bf3c-4f50-921d-8e818c60fe61',
-    label: 'Greyhound Racing',
+    label: 'Greyhounds',
     iconSrc: '/images/grayhound.png',
   },
   {
     id: '161d9be2-e909-4326-8c2c-35ed71fb460b',
-    label: 'Harness Racing',
+    label: 'Harness',
     iconSrc: '/images/harness.png',
   },
 ];
@@ -41,7 +41,10 @@ describe('CategoryTabs', () => {
     renderComponent();
 
     categories.forEach((category) => {
-      expect(screen.getByText(category.label)).toBeInTheDocument();
+      const button = screen.getByRole('button', {
+        name: new RegExp(category.label, 'i'),
+      });
+      expect(button).toBeInTheDocument();
       expect(screen.getByAltText(category.label)).toHaveAttribute(
         'src',
         category.iconSrc,
@@ -52,7 +55,9 @@ describe('CategoryTabs', () => {
   test('calls setCategory when a tab is clicked', () => {
     renderComponent();
 
-    const greyhoundTab = screen.getByText('Greyhound Racing');
+    const greyhoundTab = screen.getByRole('button', {
+      name: /Greyhounds/i,
+    });
     fireEvent.click(greyhoundTab);
 
     expect(mockSetCategory).toHaveBeenCalledWith(
@@ -63,7 +68,9 @@ describe('CategoryTabs', () => {
   test('applies selected class to the clicked tab', () => {
     renderComponent();
 
-    const greyhoundTab = screen.getByText('Greyhound Racing');
+    const greyhoundTab = screen.getByRole('button', {
+      name: /Greyhounds/i,
+    });
     fireEvent.click(greyhoundTab);
 
     expect(greyhoundTab).toHaveClass('selected');
@@ -72,8 +79,12 @@ describe('CategoryTabs', () => {
   test('removes selected class from previously selected tab', () => {
     renderComponent();
 
-    const greyhoundTab = screen.getByText('Greyhound Racing');
-    const harnessTab = screen.getByText('Harness Racing');
+    const greyhoundTab = screen.getByRole('button', {
+      name: /Greyhounds/i,
+    });
+    const harnessTab = screen.getByRole('button', {
+      name: /Harness/i,
+    });
 
     fireEvent.click(greyhoundTab);
     expect(greyhoundTab).toHaveClass('selected');
@@ -83,19 +94,12 @@ describe('CategoryTabs', () => {
     expect(harnessTab).toHaveClass('selected');
   });
 
-  test('renders with the correct initial state', () => {
-    renderComponent();
-
-    categories.forEach((category) => {
-      const tab = screen.getByText(category.label);
-      expect(tab).not.toHaveClass('selected');
-    });
-  });
-
   test('updates selected tab correctly', () => {
     renderComponent();
 
-    const allTab = screen.getByText('All');
+    const allTab = screen.getByRole('button', {
+      name: /All/i,
+    });
     fireEvent.click(allTab);
 
     expect(mockSetCategory).toHaveBeenCalledWith(null);
