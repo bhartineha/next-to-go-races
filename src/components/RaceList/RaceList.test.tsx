@@ -8,7 +8,9 @@ import { parseAdvertisedStart, isTimeValid } from '../../utils/timeUtils';
 
 // Mock the useFetchRaces hook
 jest.mock('../../hooks/useFetchRaces');
-const mockUseFetchRaces = useFetchRaces as jest.MockedFunction<typeof useFetchRaces>;
+const mockUseFetchRaces = useFetchRaces as jest.MockedFunction<
+  typeof useFetchRaces
+>;
 
 // Mock the utility functions
 jest.mock('../../utils/timeUtils', () => ({

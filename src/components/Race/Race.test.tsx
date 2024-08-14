@@ -27,9 +27,11 @@ describe('Race Component', () => {
 
     expect(screen.getByText('Meeting 1')).toBeInTheDocument();
     expect(screen.getByText('Race Number: 1')).toBeInTheDocument();
-    expect(screen.getByText((content, element) => {
-      return element?.textContent === 'Starts In: Mock Timer';
-    })).toBeInTheDocument();
+    expect(
+      screen.getByText((content, element) => {
+        return element?.textContent === 'Starts In: Mock Timer';
+      }),
+    ).toBeInTheDocument();
   });
 
   test('parses advertisedStart correctly as string', () => {
@@ -37,9 +39,11 @@ describe('Race Component', () => {
       render(<Race {...defaultProps} />);
     });
 
-    expect(screen.getByText((content, element) => {
-      return element?.textContent === 'Starts In: Mock Timer';
-    })).toBeInTheDocument();
+    expect(
+      screen.getByText((content, element) => {
+        return element?.textContent === 'Starts In: Mock Timer';
+      }),
+    ).toBeInTheDocument();
   });
 
   test('parses advertisedStart correctly as object with seconds property', () => {
@@ -52,8 +56,10 @@ describe('Race Component', () => {
       render(<Race {...timestampProps} />);
     });
 
-    expect(screen.getByText((content, element) => {
-      return element?.textContent === 'Starts In: Mock Timer';
-    })).toBeInTheDocument();
+    expect(
+      screen.getByText((content, element) => {
+        return element?.textContent === 'Starts In: Mock Timer';
+      }),
+    ).toBeInTheDocument();
   });
 });
